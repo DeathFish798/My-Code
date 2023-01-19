@@ -42,10 +42,15 @@ class _PCA_():
                 break
 
     def PCA(self,target = 0.95):
-        res = PCA(n_components = target).fit_transform(self.X)
+        ppp = PCA(n_components = target).fit(self.X)
+        res = ppp.transform(self.X)
+        self.pr = ppp
         print()
         print("原始矩阵大小：",self.X.shape)
         print("转换矩阵大小",res.shape)
+        cov_matritx = ppp.get_covariance()
+        print(cov_matritx)
+        print()
         return res
 
 if __name__ == "__main__":
